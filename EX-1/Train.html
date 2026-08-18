@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Ticket Reservation</title>
+
+    <style>
+        body{
+            background-color:#f8f0f5;
+            font-family:Arial, sans-serif;
+            color:#333;
+        }
+
+        h1{
+            color:darkblue;
+        }
+
+        h2{
+            color:darkred;
+        }
+
+        table{
+            border-collapse:collapse;
+            width:70%;
+            background-color:white;
+            margin:15px auto;
+        }
+
+        table, th, td{
+            border:1px solid black;
+        }
+
+        th{
+            background-color:#4CAF50;
+            color:white;
+            padding:10px;
+        }
+
+        td{
+            padding:10px;
+            text-align:center;
+        }
+
+        button{
+            background-color:green;
+            color:white;
+            padding:10px 20px;
+            border:none;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background-color:darkgreen;
+        }
+
+        a{
+            text-decoration:none;
+            color:blue;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<center>
+<h1>Train Ticket Reservation</h1>
+
+<h2>Trains Available</h2>
+
+<table>
+    <tr>
+        <th>Train Name</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Status</th>
+    </tr>
+
+    <tr>
+        <td>Pothigai Express</td>
+        <td>21:15 (Virudhunagar)</td>
+        <td>07:40 (Chennai)</td>
+        <td>Available</td>
+    </tr>
+
+    <tr>
+        <td>Kanyakumari Express</td>
+        <td>17:30 (Madurai)</td>
+        <td>05:45 (Chennai)</td>
+        <td>Available</td>
+    </tr>
+
+    <tr>
+        <td>Pearl City Express</td>
+        <td>19:00 (Tuticorin)</td>
+        <td>08:00 (Chennai)</td>
+        <td>Waitlist</td>
+    </tr>
+</table>
+
+<h2>Book Your Ticket</h2>
+
+<form action="#" method="POST">
+
+<table>
+    <tr>
+        <td>Select Train</td>
+        <td>
+            <select name="train" required>
+                <option>-- Choose a Train --</option>
+                <option>Pothigai Express</option>
+                <option>Kanyakumari Express</option>
+                <option>Pearl City Express</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date of Journey</td>
+        <td>
+            <input type="date" name="date" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Passenger Name</td>
+        <td>
+            <input type="text" name="name" placeholder="Enter your name" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Class</td>
+        <td>
+            <select name="class">
+                <option>Sleeper Class (SL)</option>
+                <option>AC 3 Tier (3A)</option>
+                <option>AC 2 Tier (2A)</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <button type="submit">Proceed to Book</button>
+        </td>
+    </tr>
+</table>
+
+</form>
+
+<p><b>Best offers on first train ticket reservation</b></p>
+
+<a href="Conform.html">Confirm Booking</a>
+<br><br>
+
+<a href="A-Z.html">Home Page</a>
+
+</center>
+
+</body>
+</html>

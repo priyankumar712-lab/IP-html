@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+
+    <style>
+        body {
+            background-color: #f8f0f5;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: darkblue;
+        }
+
+        h2 {
+            color: darkred;
+        }
+
+        p {
+            color: #800000;
+            font-weight: bold;
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 6px;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Movie Ticket Booking</h1>
+
+<p>Best offers on first movie ticket booking</p>
+
+<h2>Available Movies</h2>
+
+<table>
+    <tr>
+        <th>Movie Name</th>
+        <th>Show Time</th>
+        <th>Ticket Price</th>
+        <th>Status</th>
+    </tr>
+
+    <tr>
+        <td>The Batman</td>
+        <td>12:00 PM</td>
+        <td>₹250</td>
+        <td>Available</td>
+    </tr>
+
+    <tr>
+        <td>Avatar 2</td>
+        <td>03:30 PM</td>
+        <td>₹300</td>
+        <td>Available</td>
+    </tr>
+
+    <tr>
+        <td>Inception</td>
+        <td>07:00 PM</td>
+        <td>₹200</td>
+        <td>Available</td>
+    </tr>
+</table>
+
+<h2>Book Your Tickets</h2>
+
+<form action="/submit-booking" method="POST">
+
+<table>
+    <tr>
+        <td>Select Movie</td>
+        <td>
+            <select id="movie" name="movie" required>
+                <option value="">-- Choose a Movie --</option>
+                <option>The Batman</option>
+                <option>Avatar 2</option>
+                <option>Inception</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Select Date</td>
+        <td>
+            <input type="date" id="date" name="date" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Show Time</td>
+        <td>
+            <select id="time" name="time">
+                <option>12:00 PM</option>
+                <option>03:30 PM</option>
+                <option>07:00 PM</option>
+                <option>10:30 PM</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Number of Tickets</td>
+        <td>
+            <input type="number" id="tickets" name="tickets" min="1" max="10" value="1">
+        </td>
+    </tr>
+
+    <tr>
+        <td>Your Name</td>
+        <td>
+            <input type="text" id="name" name="user_name" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Email Address</td>
+        <td>
+            <input type="email" id="email" name="user_email" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <button type="submit">Book Tickets</button>
+        </td>
+    </tr>
+</table>
+
+</form>
+
+<br>
+
+<a href="Conform.html">Confirm Booking</a>
+
+<br><br>
+
+<a href="A-Z.html">Home Page</a>
+
+</body>
+</html>

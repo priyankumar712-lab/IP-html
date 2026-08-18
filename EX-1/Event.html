@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Event & Sports Ticket Booking</title>
+
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #0b3c5d;
+        }
+
+        h2 {
+            color: #d9534f;
+        }
+
+        p {
+            color: #328cc1;
+            font-weight: bold;
+        }
+
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #1d2731;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-shadow: 0px 0px 1px #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Live Stadium Ticket Booking</h1>
+
+<p>Grab early-bird discounts on IPL & Football tournament tickets!</p>
+
+<h2>Upcoming Matches & Events</h2>
+
+<table>
+    <tr>
+        <th>Event / Match</th>
+        <th>Venue & Stadium</th>
+        <th>Date & Time</th>
+        <th>Base Price</th>
+        <th>Availability</th>
+    </tr>
+
+    <tr>
+        <td>IPL: Mumbai Indians vs Chennai Super Kings</td>
+        <td>Wankhede Stadium, Mumbai</td>
+        <td>April 18 - 07:30 PM</td>
+        <td>₹800</td>
+        <td>Filling Fast</td>
+    </tr>
+
+    <tr>
+        <td>Football: Bengaluru FC vs ATK Mohun Bagan</td>
+        <td>Kanteerava Stadium, Bengaluru</td>
+        <td>April 20 - 04:30 PM</td>
+        <td>₹400</td>
+        <td>Available</td>
+    </tr>
+
+    <tr>
+        <td>IPL: Royal Challengers Bangalore vs Delhi Capitals</td>
+        <td>M. Chinnaswamy Stadium, Bengaluru</td>
+        <td>April 22 - 07:30 PM</td>
+        <td>₹1200</td>
+        <td>Available</td>
+    </tr>
+</table>
+
+<h2>Book Your Stadium Seats</h2>
+
+<form action="/submit-booking" method="POST">
+
+<table>
+    <tr>
+        <td>Select Event / Match</td>
+        <td>
+            <select id="event" name="event" required>
+                <option value="">-- Choose an Event --</option>
+                <option>IPL: MI vs CSK (Mumbai)</option>
+                <option>Football: BFC vs ATKMB (Bengaluru)</option>
+                <option>IPL: RCB vs DC (Bengaluru)</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Ticket Category / Stand</td>
+        <td>
+            <select id="stand" name="stand" required>
+                <option value="">-- Choose Seating Zone --</option>
+                <option>General Stands (East/West)</option>
+                <option>Premium Stands (North Pavilion)</option>
+                <option>VIP Box (Includes Hospitality)</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Number of Tickets</td>
+        <td>
+            <input type="number" id="tickets" name="tickets" min="1" max="6" value="1">
+            <small style="display:block; color:#666; margin-top:4px;">Max 6 tickets per booking</small>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Your Name</td>
+        <td>
+            <input type="text" id="name" name="user_name" placeholder="Enter your full name" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Email Address</td>
+        <td>
+            <input type="email" id="email" name="user_email" placeholder="Enter email for ticket delivery" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Mobile Number</td>
+        <td>
+            <input type="tel" id="phone" name="user_phone" placeholder="Enter 10-digit mobile number" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <button type="submit">Proceed to Payment</button>
+        </td>
+    </tr>
+</table>
+
+</form>
+
+<br>
+
+<a href="Conform.html">Confirm Booking</a>
+
+<br><br>
+
+<a href="A-Z.html">Back to Home</a>
+
+</body>
+</html>

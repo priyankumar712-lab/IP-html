@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-Z Reservation</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        background: url('a-z.png') no-repeat center center fixed;
+        background-size: cover;
+        background-color: #f8f0f5;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .content-container {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.85); /* Optional: semi-transparent background to make text readable */
+        border-radius: 10px;
+        max-width: 800px;
+        width: 90%;
+    }
+    h1 {
+        font-size: 3.5rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.5rem;
+        color: #555;
+        margin-bottom: 30px;
+    }
+    .content-container a,
+    .content-container li {
+        font-size: 1.5rem;
+        display: inline-block;
+        margin: 15px;
+        padding: 15px 30px;
+        background-color: #ff6f61;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .content-container a:hover {
+        background-color: #e65c50;
+    }
+    .offers {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #e65c50;
+        margin-top: 30px;
+    }
+</style>
+</head>
+<body>
+
+<div class="content-container">
+    <marquee><h1>Welcome to A-Z Reservation</h1></marquee>
+    <p>Here is a platform for all-in-one booking & reservation</p>
+   
+    <div>
+        <a href="Movie.html">🎞️ Movie ticket booking</a>
+        <a href="Train.html">🚇 Train ticket reservation</a>
+        <a href="Bus.html">🚍 Bus ticket booking</a>
+        <a href="Event.html">🗽 Event Booking</a>
+    </div>
+   
+    <p class="offers">👌 Offers on first booking 🔥.</p>
+</div>
+
+</body>
+</html>
