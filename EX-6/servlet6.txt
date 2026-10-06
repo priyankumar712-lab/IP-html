@@ -1,0 +1,214 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/BookingServlet")
+public class BookingServlet extends HttpServlet {
+
+```
+protected void doPost(HttpServletRequest request,
+                      HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+
+    // Get data from HTML form
+    String userName = request.getParameter("userName");
+    String email = request.getParameter("email");
+    String phone = request.getParameter("phone");
+    String eventName = request.getParameter("eventName");
+    String eventDate = request.getParameter("eventDate");
+    String numTickets = request.getParameter("numTickets");
+    String seatType = request.getParameter("seatType");
+    String paymentMethod = request.getParameter("payment");
+
+    Connection con = null;
+
+    try {
+
+        // Load MySQL JDBC Driver
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        // Connect to MySQL
+        con = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/servlet"
+            + "?useSSL=false"
+            + "&allowPublicKeyRetrieval=true"
+            + "&serverTimezone=UTC",
+            "root",
+            "root123"
+        );
+
+        // Insert booking details
+        String sql = "INSERT INTO tickets "
+                + "(user_name, event_name, num_tickets, "
+                + "email, phone, event_date, seat_type, payment_method) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setString(1, userName);
+        ps.setString(2, eventName);
+        ps.setInt(3, Integer.parseInt(numTickets));
+        ps.setString(4, email);
+        ps.setString(5, phone);
+
+        if (eventDate == null || eventDate.isEmpty()) {
+            ps.setDate(6, null);
+        } else {
+            ps.setDate(6, java.sql.Date.valueOf(eventDate));
+        }
+
+        ps.setString(7, seatType);
+        ps.setString(8, paymentMethod);
+
+        int rows = ps.executeUpdate();
+
+        if (rows > 0) {
+
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Booking Successful</title>");
+            out.println("</head>");
+            out.println("<body>");
+
+            out.println("<h2>Ticket Booking Successful!</h2>");
+
+            out.println("<p><b>Thank you, "
+                    + userName + "!</b></p>");
+
+            out.println("<hr>");
+
+            // Display all booking records
+            out.println("<h2>Booking Details</h2>");
+
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery(
+                    "SELECT * FROM tickets"
+            );
+
+            out.println("<table border='1' cellpadding='8'>");
+
+            out.println("<tr>"
+                    + "<th>Ticket ID</th>"
+                    + "<th>User Name</th>"
+                    + "<th>Email</th>"
+                    + "<th>Phone</th>"
+                    + "<th>Event</th>"
+                    + "<th>Event Date</th>"
+                    + "<th>Tickets</th>"
+                    + "<th>Seat Type</th>"
+                    + "<th>Payment</th>"
+                    + "<th>Booking Date</th>"
+                    + "</tr>");
+
+            while (rs.next()) {
+
+                out.println("<tr>");
+
+                out.println("<td>"
+                        + rs.getInt("ticket_id")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getString("user_name")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getString("email")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getString("phone")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getString("event_name")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getDate("event_date")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getInt("num_tickets")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getString("seat_type")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getString("payment_method")
+                        + "</td>");
+
+                out.println("<td>"
+                        + rs.getTimestamp("booking_date")
+                        + "</td>");
+
+                out.println("</tr>");
+            }
+
+            out.println("</table>");
+
+            rs.close();
+            stmt.close();
+            ps.close();
+
+            out.println("</body>");
+            out.println("</html>");
+
+        } else {
+
+            out.println("<h3>Booking failed. Please try again.</h3>");
+        }
+
+    }
+    catch (ClassNotFoundException e) {
+
+        out.println("<h3>MySQL Driver Not Found</h3>");
+        out.println("<p>" + e.getMessage() + "</p>");
+
+    }
+    catch (SQLException e) {
+
+        out.println("<h3>Database Error</h3>");
+        out.println("<p>" + e.getMessage() + "</p>");
+
+    }
+    catch (Exception e) {
+
+        out.println("<h3>Error</h3>");
+        out.println("<p>" + e.getMessage() + "</p>");
+
+    }
+    finally {
+
+        try {
+            if (con != null) {
+                con.close();
+            }
+        }
+        catch (SQLException e) {
+            // Ignore connection closing error
+        }
+
+        out.close();
+    }
+}
+```
+
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Ticket Booking System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 6px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #34495e;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: #fff;
+        }
+
+        input:focus, select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .radio-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .radio-option:hover {
+            border-color: #667eea;
+            background-color: #f0f4ff;
+        }
+
+        .radio-option input[type="radio"] {
+            margin: 0 6px 0 0;
+            accent-color: #667eea;
+            cursor: pointer;
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .reset {
+            width: 100%;
+            padding: 11px;
+            margin-top: 10px;
+            background: #f7fafc;
+            color: #718096;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .reset:hover {
+            background: #edf2f7;
+            color: #4a5568;
+        }
+
+        .info {
+            margin-top: 25px;
+            padding: 14px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎫 Ticket Booking</h1>
+    <p class="subtitle">Book your tickets quickly and easily</p>
+
+    <form action="BookingServlet" method="post">
+
+        <!-- User Details -->
+        <label for="userName">User Name</label>
+        <input type="text" id="userName" name="userName" placeholder="Enter your name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+        <!-- Event Details -->
+        <label for="eventName">Event Name</label>
+        <select id="eventName" name="eventName" required>
+            <option value="">-- Select Event --</option>
+            <option value="Movie">Movie</option>
+            <option value="Music Concert">Music Concert</option>
+            <option value="Sports Event">Sports Event</option>
+            <option value="College Fest">College Fest</option>
+            <option value="Drama Show">Drama Show</option>
+        </select>
+
+        <label for="eventDate">Event Date</label>
+        <input type="date" id="eventDate" name="eventDate" required>
+
+        <label for="numTickets">Number of Tickets</label>
+        <input type="number" id="numTickets" name="numTickets" min="1" max="10" placeholder="Enter number of tickets" required>
+
+        <!-- Seat Selection -->
+        <label>Seat Type</label>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" id="standard" name="seatType" value="Standard" checked>
+                <label for="standard">Standard</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="premium" name="seatType" value="Premium">
+                <label for="premium">Premium</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="vip" name="seatType" value="VIP">
+                <label for="vip">VIP</label>
+            </div>
+        </div>
+
+        <!-- Payment -->
+        <label for="payment">Payment Method</label>
+        <select id="payment" name="payment" required>
+            <option value="">-- Select Payment Method --</option>
+            <option value="UPI">UPI</option>
+            <option value="Debit Card">Debit Card</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Net Banking">Net Banking</option>
+        </select>
+
+        <!-- Buttons -->
+        <button type="submit" class="button">🎫 Book Ticket</button>
+        <button type="reset" class="reset">Clear Form</button>
+    </form>
+
+    <div class="info">
+        <strong>Booking Information</strong><br>
+        • Enter your correct name and event details.<br>
+        • Select the required number of tickets.<br>
+        • Choose your preferred seat type.<br>
+        • Submit the form to complete the booking.
+    </div>
+
+    <footer>
+        Online Ticket Booking System | Java Servlet + JDBC + MySQL
+    </footer>
+</div>
+
+</body>
+</html>

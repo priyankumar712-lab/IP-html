@@ -1,0 +1,112 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE servlet;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE servlet;
+Database changed
+mysql> CREATE TABLE tickets (
+    ->     ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     user_name VARCHAR(50),
+    ->     event_name VARCHAR(50),
+    ->     num_tickets INT,
+    ->     email VARCHAR(100),
+    ->     phone VARCHAR(15),
+    ->     event_date DATE,
+    ->     seat_type VARCHAR(30),
+    ->     payment_method VARCHAR(30),
+    ->     booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_servlet |
++-------------------+
+| tickets           |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> DESCRIBE tickets;
++----------------+--------------+------+-----+-------------------+-------------------+
+| Field          | Type         | Null | Key | Default           | Extra             |
++----------------+--------------+------+-----+-------------------+-------------------+
+| ticket_id      | int          | NO   | PRI | NULL              | auto_increment    |
+| user_name      | varchar(50)  | YES  |     | NULL              |                   |
+| event_name     | varchar(50)  | YES  |     | NULL              |                   |
+| num_tickets    | int          | YES  |     | NULL              |                   |
+| email          | varchar(100) | YES  |     | NULL              |                   |
+| phone          | varchar(15)  | YES  |     | NULL              |                   |
+| event_date     | date         | YES  |     | NULL              |                   |
+| seat_type      | varchar(30)  | YES  |     | NULL              |                   |
+| payment_method | varchar(30)  | YES  |     | NULL              |                   |
+| booking_date   | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++----------------+--------------+------+-----+-------------------+-------------------+
+10 rows in set (0.00 sec)
+
+mysql> INSERT INTO tickets
+    -> (user_name, event_name, num_tickets, email, phone,
+    ->  event_date, seat_type, payment_method)
+    -> VALUES
+    -> ('Priyan', 'Music Concert', 2, 'priyan@gmail.com',
+    ->  '9876543210', '2026-09-15', 'Premium', 'UPI');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM tickets;
++-----------+-----------+---------------+-------------+------------------+------------+------------+-----------+----------------+---------------------+
+| ticket_id | user_name | event_name    | num_tickets | email            | phone      | event_date | seat_type | payment_method | booking_date        |
++-----------+-----------+---------------+-------------+------------------+------------+------------+-----------+----------------+---------------------+
+|         1 | Priyan    | Music Concert |           2 | priyan@gmail.com | 9876543210 | 2026-09-15 | Premium   | UPI            | 2026-09-01 15:43:37 |
++-----------+-----------+---------------+-------------+------------------+------------+------------+-----------+----------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT user_name, event_name, num_tickets
+    -> FROM tickets;
++-----------+---------------+-------------+
+| user_name | event_name    | num_tickets |
++-----------+---------------+-------------+
+| Priyan    | Music Concert |           2 |
++-----------+---------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT
+    ->     ticket_id,
+    ->     user_name,
+    ->     email,
+    ->     phone,
+    ->     event_name,
+    ->     event_date,
+    ->     num_tickets,
+    ->     seat_type,
+    ->     payment_method,
+    ->     booking_date
+    -> FROM tickets;
++-----------+-----------+------------------+------------+---------------+------------+-------------+-----------+----------------+---------------------+
+| ticket_id | user_name | email            | phone      | event_name    | event_date | num_tickets | seat_type | payment_method | booking_date        |
++-----------+-----------+------------------+------------+---------------+------------+-------------+-----------+----------------+---------------------+
+|         1 | Priyan    | priyan@gmail.com | 9876543210 | Music Concert | 2026-09-15 |           2 | Premium   | UPI            | 2026-09-01 15:43:37 |
++-----------+-----------+------------------+------------+---------------+------------+-------------+-----------+----------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE tickets
+    -> SET num_tickets = 3
+    -> WHERE ticket_id = 1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>
+
+
+
+
